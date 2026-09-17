@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "checkJs": true,
+    "target": "es2022",
+    "module": "nodenext",
+    "paths": {
+      "@sap/cds": ["./node_modules/@cap-js/cds-types"]
+    },
+    "moduleResolution": "nodenext"
+  },
+  "include": ["srv", "db", "@cds-models"]
+}

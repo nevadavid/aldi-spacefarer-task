@@ -1,0 +1,25 @@
+@server = http://localhost:4004/odata/v4/spacefarer
+@auth = Basic admin:admin
+
+### Read all
+GET {{server}}/Spacefarers
+Authorization: {{auth}}
+
+### ares must NOT see a Terran by direct ID
+GET {{server}}/Spacefarers(11111111-0000-0000-0000-000000000001)
+Authorization: Basic ares:ares
+
+### Add new spacefarer
+POST {{server}}/Spacefarers
+Authorization: Basic admin:admin
+Content-Type: application/json
+
+{
+  "name": "Vera Lumen",
+  "email": "vera.lumen@spacefarer.io",
+  "stardustCollection": 2500,
+  "originPlanet_code": "EAR",
+  "department_code": "NAV",
+  "position_code": "LTC",
+  "spacesuitColor_code": "AZURE"
+}

@@ -1,0 +1,26 @@
+{
+  "cds": {
+    "requires": {
+      "auth": {
+        "kind": "mocked",
+        "users": {
+          "terra": {
+            "password": "terra",
+            "roles": ["Spacefarer"],
+            "attr": { "planet": "EAR" }
+          },
+          "ares": {
+            "password": "ares",
+            "roles": ["Spacefarer"],
+            "attr": { "planet": "MAR" }
+          },
+          "admin": {
+            "password": "admin",
+            "roles": ["Admin"]
+          },
+          "*": false
+        }
+      }
+    }
+  }
+}

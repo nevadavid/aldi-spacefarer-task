@@ -1,0 +1,9 @@
+ID,name,email,stardustCollection,wormholeNavigationSkill_code,spacesuitColor_code,originPlanet_code,department_code,position_code
+11111111-0000-0000-0000-000000000001,Zara Nebulon,zara.nebulon@spacefarer.io,14200,4,CHROME,EAR,NAV,CPT
+11111111-0000-0000-0000-000000000002,Kex Vorlund,kex.vorlund@spacefarer.io,3100,3,AZURE,MAR,NAV,CMD
+11111111-0000-0000-0000-000000000003,Ilsa Quorren,ilsa.quorren@spacefarer.io,2050,3,SOLAR,VLC,ENG,LTC
+11111111-0000-0000-0000-000000000004,Brant Okoye,brant.okoye@spacefarer.io,870,2,CRIMSON,EAR,XEN,ENS
+11111111-0000-0000-0000-000000000005,Sunee Halvard,sunee.halvard@spacefarer.io,540,2,VOID,TAT,DIP,ENS
+11111111-0000-0000-0000-000000000006,Doran Vex,doran.vex@spacefarer.io,310,1,AZURE,KPX,ENG,CDT
+11111111-0000-0000-0000-000000000007,Mira Castellan,mira.castellan@spacefarer.io,120,1,CRIMSON,MAR,XEN,CDT
+11111111-0000-0000-0000-000000000008,Tobias Renn,tobias.renn@spacefarer.io,6400,3,CHROME,EAR,DIP,CMD
