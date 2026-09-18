@@ -6,7 +6,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "watch-spacefarer-fiori": "cds watch --open spacefarerfiori/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "keywords": [],
@@ -17,10 +17,12 @@
     "@sap/cds": "^10.1.0"
   },
   "devDependencies": {
+    "@cap-js/cds-test": "^1.0.2",
+    "@cap-js/cds-typer": ">=0.1",
     "@cap-js/cds-types": "^0.19.0",
     "@cap-js/sqlite": "^3.1.1",
-    "@cap-js/cds-typer": ">=0.1",
-    "cds-plugin-ui5": "^0.17.0"
+    "cds-plugin-ui5": "^0.17.0",
+    "jest": "^30.5.2"
   },
   "imports": {
     "#cds-models/*": "./@cds-models/*/index.js"

@@ -152,6 +152,25 @@ Labels come from `@title` annotations on the model, so they appear in
 this UI. Presentation-only annotations (`UI.LineItem`, `UI.SelectionFields`)
 live in `app/spacefarers/annotations.cds`, separate from the semantic model.
 
+## Tests
+
+```bash
+npm test
+```
+
+This runs [test/spacefarers.test.js](test/spacefarers.test.js) with Jest.
+`cds.test()` boots the service against an in-memory SQLite database (seeded
+from `db/data/` and `test/data/`, same as `cds watch`) and drives it over
+HTTP with the mocked `admin`/`ares` users from `.cdsrc.json` — the same
+scenarios `tests.http` covers by hand:
+
+- Rank is derived from stardust when a draft is activated without one.
+- Activation rejects a claimed rank the stardust doesn't support (400).
+- Activation rejects an unknown rank code (400).
+- A `Spacefarer` user from one planet gets a 404 for a record from another
+  planet, not a 403 (see [Service and authorization](#service-and-authorization)).
+- An `Admin` user sees every record.
+
 ## What I would do differently in production
 
 - Outbox the welcome message instead of sending it inside the transaction.
