@@ -16,5 +16,5 @@ jobs:
           cache: npm
 
       - run: npm ci
-      - run: npx cds build
+      - run: npx cds-typer "*"
       - run: npm test
