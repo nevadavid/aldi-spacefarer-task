@@ -14,7 +14,6 @@ annotate service.Spacefarers with @(
       },
       {
         $Type: 'UI.DataField',
-        Label: 'spacesuitColor_code',
         Value: spacesuitColor_code,
       },
       {
@@ -27,17 +26,14 @@ annotate service.Spacefarers with @(
       },
       {
         $Type: 'UI.DataField',
-        Label: 'originPlanet_code',
         Value: originPlanet_code,
       },
       {
         $Type: 'UI.DataField',
-        Label: 'department_code',
         Value: department_code,
       },
       {
         $Type: 'UI.DataField',
-        Label: 'position_code',
         Value: position_code,
       },
     ],
@@ -45,7 +41,7 @@ annotate service.Spacefarers with @(
   UI.Facets                    : [{
     $Type : 'UI.ReferenceFacet',
     ID    : 'GeneratedFacet1',
-    Label : 'General Information',
+    Label : '{i18n>GeneralInformation}',
     Target: '@UI.FieldGroup#GeneratedGroup',
   }, ],
   UI.LineItem                  : [
