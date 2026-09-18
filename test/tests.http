@@ -1,17 +1,28 @@
 @server = http://localhost:4004/odata/v4/spacefarer
 @auth = Basic admin:admin
 
-### Read all
-GET {{server}}/Spacefarers
+### Get all
+GET {{server}}/Spacefarers?$top=3&$skip=3&$orderby=name
+Authorization: {{auth}}
+
+### Get one
+GET {{server}}/Spacefarers(8967e62f-a1c0-426a-aa3f-809fba9bec22)
 Authorization: {{auth}}
 
 ### ares must NOT see a Terran by direct ID
 GET {{server}}/Spacefarers(11111111-0000-0000-0000-000000000001)
 Authorization: Basic ares:ares
 
-### Add new spacefarer
+### 1. Create draft
 POST {{server}}/Spacefarers
-Authorization: Basic admin:admin
+Authorization: {{auth}}
+Content-Type: application/json
+
+{}
+
+### 2. Fill it
+PATCH {{server}}/Spacefarers(ID=5a207abe-0b75-4447-be13-84352ed09a63,IsActiveEntity=false)
+Authorization: {{auth}}
 Content-Type: application/json
 
 {
@@ -22,4 +33,27 @@ Content-Type: application/json
   "department_code": "NAV",
   "position_code": "LTC",
   "spacesuitColor_code": "AZURE"
+}
+
+### 3. Activate
+POST {{server}}/Spacefarers(ID=04d83945-7217-4e57-aed8-41705c9f6d60,IsActiveEntity=false)/SpacefarerService.draftActivate
+Authorization: {{auth}}
+Content-Type: application/json
+
+{}
+
+### Negative: claiming a rank without the stardust to back it
+PATCH {{server}}/Spacefarers(ID=04d83945-7217-4e57-aed8-41705c9f6d60,IsActiveEntity=false)
+Authorization: {{auth}}
+Content-Type: application/json
+
+{
+  "name": "Pretender Pete",
+  "email": "pete@spacefarer.io",
+  "stardustCollection": 300,
+  "wormholeNavigationSkill_code": 4,
+  "originPlanet_code": "MAR",
+  "department_code": "ENG",
+  "position_code": "CDT",
+  "spacesuitColor_code": "VOID"
 }

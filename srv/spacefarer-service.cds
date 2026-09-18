@@ -3,6 +3,7 @@ using com.sap.spacefarer as db from '../db/schema';
 @requires: 'authenticated-user'
 
 service SpacefarerService {
+  @odata.draft.enabled
   @restrict: [
     {
       grant: ['*'],

@@ -6,8 +6,10 @@ const {
 
 class SpacefarerService extends cds.ApplicationService {
   init() {
-    this.before("CREATE", "Spacefarers", (req) => this.enhanceCandidate(req));
-    this.after("CREATE", "Spacefarers", (data) => this.sendWelcomeEmail(data));
+    this.before("SAVE", "Spacefarers", (req) => this.enhanceCandidate(req));
+    this.after("SAVE", "Spacefarers", (data, req) =>
+      this.sendWelcomeEmail(req.data),
+    );
 
     return super.init();
   }
@@ -17,7 +19,7 @@ class SpacefarerService extends cds.ApplicationService {
    */
   async enhanceCandidate(req) {
     const stardust = req.data.stardustCollection ?? 0;
-    const claimed = req.data.wormholeNavigationSkill_code;
+    const claimed = req.data.wormholeNavigationSkill_code ?? undefined;
 
     const skills = await SELECT.from(WormholeNavigationSkills).orderBy(
       "requiredStardust desc",
@@ -59,12 +61,9 @@ class SpacefarerService extends cds.ApplicationService {
   }
 
   /**
-   * @param {import("#cds-models/com/sap/spacefarer").Spacefarer} data
+   * @param {import("#cds-models/com/sap/spacefarer").Spacefarer} spacefarer
    */
-  async sendWelcomeEmail(data) {
-    const id = Array.isArray(data) ? data[0]?.ID : data?.ID;
-    const spacefarer = await SELECT.one.from(Spacefarers, id);
-
+  async sendWelcomeEmail(spacefarer) {
     if (!spacefarer?.email) {
       return;
     }
